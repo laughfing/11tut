@@ -69,8 +69,9 @@ function App() {
       />
       <SearchItem search={search} setSearch={setSearch} />
       <main>
+        {isLoading && <p>Loading Items</p>}
         {fetchError && <p style={{ color: "red" }}>{`Error: ${fetchError}`}</p>}
-        {!fetchError && (
+        {!fetchError && !isLoading && (
           <Content
             items={items.filter((item) =>
               item.item.toLowerCase().includes(search.toLowerCase())
